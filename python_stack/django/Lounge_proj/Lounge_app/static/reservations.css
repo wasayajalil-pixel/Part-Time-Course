@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: #f5f0e8;
+}
+
+nav {
+    background: #111;
+    color: white;
+    padding: 25px 6%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav h2 {
+    color: #d7b46a;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+section {
+    width: 90%;
+    margin: 60px auto;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+th {
+    background: #111;
+    color: #d7b46a;
+}
+
+th,
+td {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+td a {
+    background: #d7b46a;
+    color: #111;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.reject {
+    background: #111;
+    color: white;
+}
+
+.form-box {
+    width: 460px;
+    margin: 70px auto;
+    background: white;
+    padding: 40px;
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea,
+.form-box button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.form-box button {
+    background: #d7b46a;
+    border: none;
+}

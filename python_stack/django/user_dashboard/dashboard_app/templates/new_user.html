@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add User</title>
+</head>
+<body>
+
+    <h1>Add New User</h1>
+
+    <a href="/dashboard">Dashboard</a>
+    |
+    <a href="/logout">Logout</a>
+
+    <hr>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/users/create" method="POST">
+        {% csrf_token %}
+
+        <p>First Name:</p>
+        <input type="text" name="first_name">
+
+        <p>Last Name:</p>
+        <input type="text" name="last_name">
+
+        <p>Email:</p>
+        <input type="email" name="email">
+
+        <p>Password:</p>
+        <input type="password" name="password">
+
+        <p>Confirm Password:</p>
+        <input type="password" name="confirm_password">
+
+        <p>User Level:</p>
+
+        <select name="user_level">
+            <option value="normal">Normal</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Create User
+        </button>
+
+    </form>
+
+</body>
+</html>

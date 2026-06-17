@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>create a boat</h1>
+    <form action="addboat" method="post">
+        {% csrf_token %}
+        <label for="">boatname</label>
+        <input type="text" placeholder="Fill boat name" name="boatname">
+
+        <label for="">boat color</label>
+        <input type="color" placeholder="color" name="boatcolor">
+        
+        <label for="">boat type </label>
+        <input type="text" name="boattype" placeholder="type">
+        
+        <button type="submit"> create </button>
+    </form>
+    <a href="{% url 'homeroute' %}">Back</a>    
+</body>
+</html>

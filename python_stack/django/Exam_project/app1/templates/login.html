@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    
+     <form action="/loginsubmit" method="POST">
+        {%  csrf_token %}
+        <label for="">Username</label>
+        <input type="text" placeholder="Fill Username" name="username">
+
+        <label for="">Password</label>
+        <input type="password" placeholder="Fill Password" name="password">
+
+        <input type="hidden"  value="Chaker" name="newname">
+
+        <input type="submit" value="Login">
+
+
+        <a href="{% url 'landingpage' %}">Back</a>
+
+
+    </form>
+
+</body>
+</html>

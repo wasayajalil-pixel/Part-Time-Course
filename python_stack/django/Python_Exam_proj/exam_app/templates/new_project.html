@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+
+
+    <p>Game name: {{project.title}} </p>
+    <p>Genre : {{project.network}}</p>
+    <p>Description:{{project.desc}}</p>
+    <p>Created By:{{project.created_by.first_name}}{{project.created_by.last_name}}</p>
+    
+    <a href="/projects/{{project.id}}/edit/">Edit</a>
+    <a href="/projects/{{project.id}}/delete/">Delete</a>
+
+</body>
+
+</html>

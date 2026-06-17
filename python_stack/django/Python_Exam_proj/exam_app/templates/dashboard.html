@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+    
+    {% for message in messages %}
+    <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+
+    <form action="/projects/create/" method = "POST">
+        {%csrf_token%}
+
+        <label for="text">Game name</label>
+        <input type="text" name="title"><br><br>
+        <label for="text">Genre</label>
+        <input type="text" name="network"><br><br>
+        <label for="text">Release Date</label>
+        <input type="date" name="release_date"><br><br>
+        <label for="text">Description</label>
+        <textarea name="desc"></textarea><br><br>
+        <button type="submit">create a game</button>
+    </form>
+    <hr>
+
+    <p>Game name: {{project.title}} </p>
+    <p>Genre : {{project.network}}</p>
+    <p>Description:{{project.desc}}</p>
+    <p>Created By:{{project.created_by.first_name}}{{project.created_by.last_name}}</p>
+    
+    <a href="/projects/{{ project.id }}/edit/">Edit</a>
+    <a href="/projects/{{project.id}}/delete/"></a>
+
+</body>

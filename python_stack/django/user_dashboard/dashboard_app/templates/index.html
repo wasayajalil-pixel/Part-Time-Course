@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login and Registration</title>
+</head>
+<body>
+
+    <h1>Test App</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Register</h2>
+
+    <form action="/register" method="POST">
+        {% csrf_token %}
+
+        <p>First Name:</p>
+        <input type="text" name="first_name">
+
+        <p>Last Name:</p>
+        <input type="text" name="last_name">
+
+        <p>Email:</p>
+        <input type="email" name="email">
+
+        <p>Password:</p>
+        <input type="password" name="password">
+
+        <p>Confirm Password:</p>
+        <input type="password" name="confirm_password">
+
+        <br><br>
+        <button type="submit">Register</button>
+    </form>
+
+    <hr>
+
+    <h2>Login</h2>
+
+    <form action="/login" method="POST">
+        {% csrf_token %}
+
+        <p>Email:</p>
+        <input type="email" name="email">
+
+        <p>Password:</p>
+        <input type="password" name="password">
+
+        <br><br>
+        <button type="submit">Login</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+
+  <body>
+    <h2>Welcome {{ request.session.name }}</h2>
+
+    <a href="{% url 'createaddressroute' %}">Create Address</a>
+    <a href="{% url 'showusersroute' %}">Show Users</a>
+    <a href="{% url 'createboat'  %}">Create Boat</a>
+    <a href="{% url 'logoutroute'  %}">Logout</a>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courses</title>
+</head>
+<body>
+
+    <h1>Add a New Course</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/courses/create/" method="POST">
+        {% csrf_token %}
+
+        <p>Name:</p>
+        <input type="text" name="name">
+
+        <p>Description:</p>
+        <textarea name="description"></textarea>
+
+        <br><br>
+        <button type="submit">Add</button>
+    </form>
+
+    <hr>
+
+    <h2>Courses</h2>
+
+    <table border="1">
+        <tr>
+            <th>Course Name</th>
+            <th>Description</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.name }}</td>
+            <td>{{ course.description.content }}</td>
+            <td>{{ course.created_at }}</td>
+            <td>
+                <a href="/courses/{{ course.id }}/destroy/">remove</a>
+                |
+                <a href="/courses/{{ course.id }}/comments/">comment</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

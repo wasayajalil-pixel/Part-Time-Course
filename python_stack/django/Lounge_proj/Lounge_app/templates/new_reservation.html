@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Reservation</title>
+    <link rel="stylesheet" href="{% static 'css/reservations.css' %}">
+</head>
+<body>
+
+<div class="form-box">
+    <h1>Book Table</h1>
+
+    {% for message in messages %}
+        <p class="error">{{ message }}</p>
+    {% endfor %}
+
+    <form action="/reservations/create" method="POST">
+        {% csrf_token %}
+
+        <select name="table_id">
+            {% for table in tables %}
+                <option value="{{ table.id }}">Table {{ table.number }} - {{ table.seats }} seats</option>
+            {% endfor %}
+        </select>
+
+        <input type="date" name="date">
+        <input type="time" name="time">
+        <input type="number" name="guests" placeholder="Guests">
+        <textarea name="note" placeholder="Note"></textarea>
+
+        <button>Reserve</button>
+    </form>
+
+    <a href="/reservations">Back</a>
+</div>
+
+</body>
+</html>

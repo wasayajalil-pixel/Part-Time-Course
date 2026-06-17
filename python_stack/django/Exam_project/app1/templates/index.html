@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Facebook!</title>
+    <link rel="stylesheet" href="{% static  'mystyle.css'  %}" />
+  </head>
+
+  <body>
+    <h3 class="top-head">This is Landing Page.</h3>
+
+    <a href="{%  url 'loginroute' %}"> Go to login page</a>
+    <a href="{% url 'contactroute' %}">Contact us</a>
+    <a href="{% url 'aboutroute' %}">About us</a>
+    <a href="{% url 'signuproute' %}">Sign up Now!</a>
+
+    {{ username }} 
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'auth.css' %}">
+</head>
+<body>
+
+<div class="auth-box">
+    <h1>Create Account</h1>
+
+    {% for message in messages %}
+        <p class="error">{{ message }}</p>
+    {% endfor %}
+
+    <form action="/register/process" method="POST">
+        {% csrf_token %}
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="last_name" placeholder="Last Name">
+        <input type="email" name="email" placeholder="Email">
+
+        <select name="role">
+            <option value="customer">Customer</option>
+            <option value="employee">Employee</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="confirm_password" placeholder="Confirm Password">
+
+        <button>Register</button>
+    </form>
+
+    <a href="/login">Already have account?</a>
+</div>
+
+</body>
+</html>

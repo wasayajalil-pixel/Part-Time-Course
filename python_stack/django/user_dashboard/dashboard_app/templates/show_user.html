@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+
+    <h1>
+        {{ user.first_name }} {{ user.last_name }}
+    </h1>
+
+    <a href="/dashboard">Dashboard</a>
+    |
+    <a href="/logout">Logout</a>
+
+    <hr>
+
+    <p>Email: {{ user.email }}</p>
+
+    <p>User Level: {{ user.user_level }}</p>
+
+    <p>Description:</p>
+
+    <p>{{ user.description }}</p>
+
+    <hr>
+
+    <h2>Messages</h2>
+
+    {% for message in messages %}
+
+        <div style="border:1px solid black; padding:10px; margin:10px;">
+
+            <p>
+                <strong>
+                    {{ message.user.first_name }}
+                </strong>
+                wrote:
+            </p>
+
+            <p>{{ message.message }}</p>
+
+            <small>{{ message.created_at }}</small>
+
+            <hr>
+
+            <h4>Comments</h4>
+
+            {% for comment in message.comments.all %}
+
+                <p>
+                    <strong>
+                        {{ comment.user.first_name }}
+                    </strong>
+                    :
+                    {{ comment.comment }}
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    {% endfor %}
+
+    <hr>
+
+<h2>Post a Message</h2>
+
+<form action="/messages/create/{{ user.id }}"
+      method="POST">
+
+    {% csrf_token %}
+
+    <textarea name="message"></textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Post Message
+    </button>
+
+</form>
+
+<hr>
+
+<form action="/comments/create/{{ message.id }}"
+      method="POST">
+
+    {% csrf_token %}
+
+    <input type="text" name="comment">
+
+    <button type="submit">
+        Add Comment
+    </button>
+
+</form>
+
+<br>
+
+</body>
+</html>

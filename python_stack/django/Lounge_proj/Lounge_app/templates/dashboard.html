@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>MAGIC LOUNGE</h2>
+    <a href="/logout">Logout</a>
+</nav>
+
+<section>
+    <h1>Welcome, {{ request.session.user_name }}</h1>
+    <p>Role: {{ request.session.user_role }}</p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Menu Items</h3>
+            <p>{{ menu_count }}</p>
+            <a href="/menu">Open Menu</a>
+        </div>
+
+        <div class="card">
+            <h3>Reservations</h3>
+            <p>{{ reservation_count }}</p>
+            <a href="/reservations">Open Reservations</a>
+        </div>
+
+        <div class="card">
+            <h3>Tables</h3>
+            <p>{{ table_count }}</p>
+            <a href="/reservations/new">Book Table</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

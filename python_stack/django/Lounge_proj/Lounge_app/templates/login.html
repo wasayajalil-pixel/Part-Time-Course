@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'auth.css' %}">
+</head>
+<body>
+
+<div class="auth-box">
+    <h1>Welcome Back</h1>
+
+    {% for message in messages %}
+        <p class="error">{{ message }}</p>
+    {% endfor %}
+
+    <form action="/login/process" method="POST">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <button>Login</button>
+    </form>
+
+    <a href="/register">Create account</a>
+</div>
+
+</body>
+</html>

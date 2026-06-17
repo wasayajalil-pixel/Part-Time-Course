@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up Now!</title>
+</head>
+
+<body>
+
+
+    <fieldset>
+        <legend>Registeration Form</legend>
+        <form action="signupform" method="post">
+            {% csrf_token %}
+            <label for="">Firstname: </label>
+            <input type="text" name="firstname" placeholder="fill firstname">
+            <br><br>
+            <label for="">Lastname: </label>
+            <input type="text" name="lastname" placeholder="fill lastname">
+            <br><br>
+            <label for="">Username: </label>
+            <input type="text" name="username" placeholder="fill Username">
+            <br><br>
+            <label for="">Password: </label>
+            <input type="password" name="password" placeholder="fill password">
+            <br><br>
+            <input type="submit" value="Register">
+
+        </form>
+    </fieldset>
+
+
+    {% if messages %}
+    <h2>Errors Summary</h2>
+    {% for message in messages %}
+
+    <p> {{ message }} </p>
+
+    {% endfor %}
+
+    {% endif %}
+
+
+
+    <a href="{% url 'landingpage' %}">Back</a>
+
+</body>
+
+</html>

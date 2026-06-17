@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: #111;
+    color: white;
+}
+
+.dash-nav {
+    padding: 25px 6%;
+    display: flex;
+    justify-content: space-between;
+    background: #1b1b1b;
+    border-bottom: 1px solid #d7b46a;
+}
+
+.dash-nav h2 {
+    color: #d7b46a;
+    letter-spacing: 3px;
+}
+
+.dash-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.dashboard {
+    width: 88%;
+    margin: 70px auto;
+}
+
+.dashboard h1 {
+    font-size: 45px;
+    color: #d7b46a;
+}
+
+.dashboard p {
+    color: #ccc;
+}
+
+.dash-cards {
+    margin-top: 45px;
+    display: flex;
+    gap: 25px;
+}
+
+.card {
+    flex: 1;
+    background: #1c1c1c;
+    padding: 35px;
+    border: 1px solid rgba(215,180,106,0.4);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(215,180,106,0.25);
+}
+
+.card h3 {
+    color: #d7b46a;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #111;
+    background: #d7b46a;
+    padding: 12px 22px;
+    text-decoration: none;
+}

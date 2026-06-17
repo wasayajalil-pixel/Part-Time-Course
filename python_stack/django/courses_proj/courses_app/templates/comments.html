@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Comments</title>
+</head>
+<body>
+
+    <h1>Comments for {{ course.name }}</h1>
+
+    <p><strong>Description:</strong> {{ course.description.content }}</p>
+
+    <form action="/courses/{{ course.id }}/comments/create/" method="POST">
+        {% csrf_token %}
+
+        <p>Add Comment:</p>
+        <textarea name="comment"></textarea>
+
+        <br><br>
+        <button type="submit">Add Comment</button>
+    </form>
+
+    <hr>
+
+    <h2>All Comments</h2>
+
+    {% for comment in course.comments.all %}
+        <p>{{ comment.content }}</p>
+        <small>{{ comment.created_at }}</small>
+        <hr>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+
+    <a href="/">Back</a>
+
+</body>
+</html>

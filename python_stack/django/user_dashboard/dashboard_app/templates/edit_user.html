@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit User</title>
+</head>
+<body>
+
+    <h1>Edit User</h1>
+
+    <a href="/dashboard">Dashboard</a>
+    |
+    <a href="/logout">Logout</a>
+
+    <hr>
+
+    <form action="/users/update/{{ user.id }}" method="POST">
+        {% csrf_token %}
+
+        <p>First Name:</p>
+        <input type="text"
+               name="first_name"
+               value="{{ user.first_name }}">
+
+        <p>Last Name:</p>
+        <input type="text"
+               name="last_name"
+               value="{{ user.last_name }}">
+
+        <p>Email:</p>
+        <input type="email"
+               name="email"
+               value="{{ user.email }}">
+
+        <p>Description:</p>
+
+        <textarea name="description">
+{{ user.description }}
+        </textarea>
+
+        {% if request.session.user_level == "admin" %}
+
+            <p>User Level:</p>
+
+            <select name="user_level">
+
+                <option value="normal"
+                {% if user.user_level == "normal" %}
+                    selected
+                {% endif %}
+                >
+                    Normal
+                </option>
+
+                <option value="admin"
+                {% if user.user_level == "admin" %}
+                    selected
+                {% endif %}
+                >
+                    Admin
+                </option>
+
+            </select>
+
+        {% endif %}
+
+        <br><br>
+
+        <button type="submit">
+            Update User
+        </button>
+
+    </form>
+
+</body>
+</html>
