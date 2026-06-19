@@ -4,5 +4,5 @@
 /**
  * 
  */
-module JavaCafe {
+module order_and_items {
 }
