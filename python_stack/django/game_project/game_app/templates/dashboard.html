@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+
+<a href="/logout">Logout</a>
+
+<hr>
+
+<h2>Create Game</h2>
+
+<form action="/games/create" method="POST">
+    {% csrf_token %}
+    <label for="text">Game Name</label><br><br>
+    <input type="text" name="name" placeholder="Game Name"><br><br>
+    <label for="text">Genre</label><br><br>
+    <input type="text" name="genre" placeholder="Genre"><br><br>
+    <label for="text">Release Date</label><br><br>
+    <input type="date" name="release_date"><br><br>
+    <label for="text">Description</label><br><br>
+    <textarea name="description"></textarea><br><br>
+
+    <button>Create Game</button>
+
+</form>
+
+<hr>
+
+<table border="1">
+
+<tr>
+    <th><a href="/dashboard?sort=game">Game Name</a></th>
+    <th><a href="/dashboard?sort=genre">Genre</a></th>
+    <th><a href="/dashboard?sort=release_date">Release Date</a></th>
+</tr>
+
+{% for game in games %}
+
+<tr>
+
+    <td>
+        <a href="/game/{{game.id}}">
+            {{game.name}}
+        </a>
+    </td>
+
+    <td>{{game.genre}}</td>
+
+    <td>{{game.release_date}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

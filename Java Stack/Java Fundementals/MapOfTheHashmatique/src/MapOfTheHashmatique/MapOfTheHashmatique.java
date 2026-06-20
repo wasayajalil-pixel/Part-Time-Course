@@ -1,6 +1,5 @@
 package MapOfTheHashmatique;
 import java.util.HashMap;
-import java.util.Set;
 
 public class MapOfTheHashmatique {
 	public static void main(String[] args) {

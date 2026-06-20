@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Game</title>
+</head>
+<body>
+
+<h1>Edit Game</h1>
+
+<form action="/games/{{game.id}}/update" method="POST">
+
+{% csrf_token %}
+
+<input
+type="text"
+name="name"
+value="{{game.name}}">
+
+<br><br>
+
+<input
+type="text"
+name="genre"
+value="{{game.genre}}">
+
+<br><br>
+
+<input
+type="date"
+name="release_date"
+value="{{game.release_date|date:'Y-m-d'}}">
+
+<br><br>
+
+<textarea name="description">{{game.description}}</textarea>
+
+<br><br>
+
+<button>Apply</button>
+
+<a href="/game/{{game.id}}">
+Cancel
+</a>
+
+</form>
+
+</body>
+</html>

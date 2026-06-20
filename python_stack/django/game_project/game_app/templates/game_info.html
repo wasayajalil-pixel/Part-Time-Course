@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Info</title>
+</head>
+<body>
+
+<h2>Welcome {{user.first_name}}</h2>
+
+<a href="/logout">Logout</a>
+
+<hr>
+
+<h1>{{game.name}}</h1>
+
+<p><strong>Genre:</strong> {{game.genre}}</p>
+
+<p><strong>Release Date:</strong> {{game.release_date}}</p>
+
+<p><strong>Description:</strong></p>
+
+<p>{{game.description}}</p>
+
+<p>
+Created By :
+{{game.creator.first_name}}
+{{game.creator.last_name}}
+</p>
+
+{% if game.creator.id == user.id %}
+
+<a href="/edit/game/{{game.id}}">
+    Edit
+</a>
+
+<a href="/games/{{game.id}}/delete">
+    Delete
+</a>
+
+{% endif %}
+
+<hr>
+
+<form action="/games/{{game.id}}/favorite">
+
+    <button>Add To Fav</button>
+
+</form>
+
+<form action="/games/{{game.id}}/rate" method="POST">
+
+    {% csrf_token %}
+
+    <input type="number" min="1" max="5" name="rate">
+
+    <button>Rate</button>
+
+</form>
+
+<hr>
+
+<h2>The players who like this game the most</h2>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Player Name</th>
+    <th>Rate</th>
+</tr>
+
+{% for rating in ratings %}
+
+<tr>
+
+<td>{{rating.user.id}}</td>
+
+<td>
+<a href="/profile/{{rating.user.id}}">
+    {{rating.user.first_name}}
+</a>
+</td>
+
+<td>{{rating.rate}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
