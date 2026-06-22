@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
+from django.views.decorators.cache import never_cache
+
 
 
 def current_user(request):
@@ -45,15 +47,26 @@ def logout(request):
     return redirect('/')
 
 
+@never_cache
 def dashboard(request):
     user = current_user(request)
+
     if not user:
         return redirect('/')
 
     context = {
         "user": user,
-        "games": Game.objects.sorted_games(request.GET.get('sort'))
+        "games": Game.objects.sorted_games(request.GET.get('sort')),
+        "genres": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Sport",
+            "Racing",
+            "Horror"
+        ]
     }
+
     return render(request, "dashboard.html", context)
 
 
@@ -96,7 +109,20 @@ def edit_game(request, game_id):
     if game.creator != user:
         return redirect('/dashboard')
 
-    return render(request, "edit_game.html", {"user": user, "game": game})
+    context = {
+        "user": user,
+        "game": game,
+        "genres": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Sport",
+            "Racing",
+            "Horror"
+        ]
+    }
+
+    return render(request, "edit_game.html", context)
 
 
 def update_game(request, game_id):

@@ -1,62 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
 
-<h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+    <a href="/logout">Logout</a>
 
-<a href="/logout">Logout</a>
+    <hr />
 
-<hr>
+    <h2>Create Game</h2>
 
-<h2>Create Game</h2>
+    <form action="/games/create" method="POST">
+      {% csrf_token %}
+      <label for="text">Game Name</label><br /><br />
+      <input type="text" name="name" placeholder="Game Name" /><br /><br />
+      <label>Genre</label><br /><br />
+      <select name="genre">
+      {% for genre in genres %}
+        <option value="{{ genre }}"
+            {% if game.genre == genre %}selected{% endif %}>
+            {{ genre }}
+        </option>
+      {% endfor %}
+      </select><br /><br />
+      <label for="text">Release Date</label><br /><br />
+      <input type="date" name="release_date" /><br /><br />
+      <label for="text">Description</label><br /><br />
+      <textarea name="description"></textarea><br /><br />
 
-<form action="/games/create" method="POST">
-    {% csrf_token %}
-    <label for="text">Game Name</label><br><br>
-    <input type="text" name="name" placeholder="Game Name"><br><br>
-    <label for="text">Genre</label><br><br>
-    <input type="text" name="genre" placeholder="Genre"><br><br>
-    <label for="text">Release Date</label><br><br>
-    <input type="date" name="release_date"><br><br>
-    <label for="text">Description</label><br><br>
-    <textarea name="description"></textarea><br><br>
+      <button>Create Game</button>
+    </form>
 
-    <button>Create Game</button>
+    <hr />
 
-</form>
+    <table border="1">
+      <tr>
+        <th><a href="/dashboard?sort=game">Game Name</a></th>
+        <th><a href="/dashboard?sort=genre">Genre</a></th>
+        <th><a href="/dashboard?sort=release_date">Release Date</a></th>
+      </tr>
 
-<hr>
+      {% for game in games %}
 
-<table border="1">
+      <tr>
+        <td>
+          <a href="/game/{{game.id}}"> {{game.name}} </a>
+        </td>
 
-<tr>
-    <th><a href="/dashboard?sort=game">Game Name</a></th>
-    <th><a href="/dashboard?sort=genre">Genre</a></th>
-    <th><a href="/dashboard?sort=release_date">Release Date</a></th>
-</tr>
+        <td>{{game.genre}}</td>
 
-{% for game in games %}
+        <td>{{game.release_date}}</td>
+      </tr>
 
-<tr>
-
-    <td>
-        <a href="/game/{{game.id}}">
-            {{game.name}}
-        </a>
-    </td>
-
-    <td>{{game.genre}}</td>
-
-    <td>{{game.release_date}}</td>
-
-</tr>
-
-{% endfor %}
-
-</table>
-
-</body>
+      {% endfor %}
+    </table>
+  </body>
 </html>

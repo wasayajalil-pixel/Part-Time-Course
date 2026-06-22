@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Project</title>
+</head>
+<body>
+
+<h1>Edit Project</h1>
+
+<a href="/dashboard">Dashboard</a> |
+<a href="/logout">Logout</a>
+
+<hr>
+
+{% if messages %}
+    {% for message in messages %}
+        <p style="color:red">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+<form action="/projects/{{ project.id }}/update" method="POST">
+    {% csrf_token %}
+
+    <p>Project Name</p>
+    <input
+        type="text"
+        name="name"
+        value="{{ project.name }}"
+    >
+
+    <p>Description</p>
+    <textarea name="description">{{ project.description }}</textarea>
+
+    <p>Start Date</p>
+    <input
+        type="date"
+        name="start_date"
+        value="{{ project.start_date|date:'Y-m-d' }}"
+    >
+
+    <p>End Date</p>
+    <input
+        type="date"
+        name="end_date"
+        value="{{ project.end_date|date:'Y-m-d' }}"
+    >
+
+    <br><br>
+
+    <button>Update</button>
+</form>
+
+</body>
+</html>

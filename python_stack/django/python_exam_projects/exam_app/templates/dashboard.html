@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Welcome {{ user.first_name }} to Developers Dashboard</h1>
+
+<a href="/logout">Logout</a>
+
+<hr>
+
+<a href="/projects/new">
+    <button>Create Project +</button>
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Project name</th>
+        <th>Project owner</th>
+        <th>Action</th>
+    </tr>
+
+    {% for project in projects %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+
+        <td>
+            <a href="/projects/{{ project.id }}">
+                {{ project.name }}
+            </a>
+        </td>
+
+        <td>
+            {{ project.owner.first_name }} {{ project.owner.last_name }}
+        </td>
+
+        <td>
+            {% if project.owner == user %}
+                <a href="/projects/{{ project.id }}/delete">
+                    <button>Delete</button>
+                </a>
+            {% elif user in project.joined_users.all %}
+                <a href="/projects/{{ project.id }}/separate">
+                    <button>Separate -</button>
+                </a>
+            {% else %}
+                <a href="/projects/{{ project.id }}/join">
+                    <button>Join +</button>
+                </a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

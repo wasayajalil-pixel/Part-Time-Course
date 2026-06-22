@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Details</title>
+</head>
+<body>
+
+<a href="/dashboard">Dashboard</a> |
+<a href="/logout">Logout</a>
+
+<hr>
+
+<h1>{{ project.name }}</h1>
+
+<p>
+    <b>Project Owner:</b>
+    {{ project.owner.first_name }} {{ project.owner.last_name }}
+</p>
+
+<p>
+    <b>Description:</b>
+    {{ project.description }}
+</p>
+
+<p>
+    <b>Start Date:</b>
+    {{ project.start_date }}
+</p>
+
+<p>
+    <b>End Date:</b>
+    {{ project.end_date }}
+</p>
+
+<hr>
+
+<h2>Team Members</h2>
+
+{% for member in project.joined_users.all %}
+    <p>
+        {{ member.first_name }} {{ member.last_name }}
+    </p>
+{% empty %}
+    <p>No team members yet</p>
+{% endfor %}
+
+<br>
+
+{% if project.owner == user %}
+    <a href="/projects/{{ project.id }}/edit">
+        <button>Edit</button>
+    </a>
+
+    <a href="/projects/{{ project.id }}/delete">
+        <button>Delete</button>
+    </a>
+{% endif %}
+
+</body>
+</html>

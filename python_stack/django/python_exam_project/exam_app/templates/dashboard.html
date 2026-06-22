@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome {{ user.first_name}} {{ user.last_name}} to developers Dashboard</h1>
+    <a href="/logout">Logout</a><hr>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Project name</th>
+            <th>Project Owner</th>
+            <th>Action</th>
+        </tr>
+        
+        {%for projects in projects}
+        <tr>
+            <td><a href="/projects/{{ project.id }}"></a>{{project.name}}</td>
+            <td>{{project.owner.first_name}}{{project.owner.last_name}}</td>
+             <td>
+            {% if project.owner == user %}
+                <a href="/projects/{{ project.id }}/delete">
+                    <button>Delete </button>
+                </a>
+
+            {% elif user in project.joined_users.all %}
+                <a href="/projects/{{ project.id }}/separate">
+                    <button>separate -</button>
+                </a>
+
+            {% else %}
+                <a href="/projects/{{ project.id }}/join">
+                    <button>Join +</button>
+                </a>
+            {% endif %}
+        </td>
+
+        </tr>
+        {% endfor %}
+
+        
+
+    </table>
+    
+</body>
+</html>

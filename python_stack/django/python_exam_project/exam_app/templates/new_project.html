@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create project</title>
+  </head>
+  <body>
+    <h1>Hello {{ user.first_name }} {{ user.last_name }}</h1>
+    <br />
+    <a href="/logout">Logout</a>
+    <hr />
+
+    <h2>Create Project</h2>
+    {% if messages %} {% for message in messages %}
+    <p style="color: red">{{ message }}</p>
+    {% endfor %} {% endif %}
+
+    <form action="/projects/create" method="POst">
+      {%csrf_token%}
+      <label for="text"> Project Name </label><br />
+      <input type="text" name="name" /><br />
+      <hr />
+      <label for="text">Description</label><br />
+      <input type="text" name="description" /><br />
+      <hr />
+      <label for="text">Start_date</label><br />
+      <input type="date" name="start_date" /><br />
+      <hr />
+      <label for="text">End_date</label><br />
+      <input type="date" name="end_date" /><br />
+      <hr />
+      <button type="submit">Create</button>
+      <a href="/dashboard">Back</a>
+    </form>
+  </body>
+</html>

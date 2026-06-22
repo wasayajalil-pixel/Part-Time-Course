@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>project details</title>
+  </head>
+  <body>
+    <a href="/logout">Logout</a>
+    <a href="/dashboard">Dashboard</a>
+    <hr />
+    <br />
+    <h1>Dry</h1>
+    <p>Project Name: {{ project.name }}</p>
+    <p>
+      Project Owner:{{ project.owner.first_name }} {{ project.owner.last_name }}
+    </p>
+    <p>Description : {{ project.desc }}</p>
+    <p>Start Date : {{ project.start_date }}</p>
+    <p>End Date : {{ project.end_date }}</p>
+    <hr />
+
+    {% for member in project.joined_users.all %}
+    <p>
+      {{ member.first_name }} {{member.last_name}} {% if project.owner == user
+      %}
+      <a href="/projects/{{ project.id }}/remove/{{member.id}}"> X</a>
+      {%endif%}
+    </p>
+    {%empty%}
+    <p>No team members yet</p>
+    {%endfor%}
+    <br /><br />
+    {%if project.owner == user %}
+    <a href="/projects/{{project.id}}/edit"> <button>Edit Project</button></a>
+    <a href="/projects/{{project.id}}/delete">
+      <button>Delete Project</button></a
+    >
+    {%endif%}
+  </body>
+</html>
