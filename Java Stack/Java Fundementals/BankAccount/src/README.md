@@ -102,7 +102,7 @@ Total Money: 3600.0
 ---
 ## Project Screenshot
 
-![Bank Account Output](BankAcount.png)
+![Bank Account Output](BankAccount.png)
 
 ---
 
