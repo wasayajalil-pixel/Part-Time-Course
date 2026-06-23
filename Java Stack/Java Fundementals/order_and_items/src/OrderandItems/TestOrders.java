@@ -2,14 +2,14 @@ package OrderandItems;
 
 public class TestOrders {
 	public static void main(String[] args) {
-//Items
+//Items object
 		Items items1 = new Items("mocha",3.50);
 		Items items2 = new Items("latte",4.50);
 		Items items3 = new Items("drip coffee",5.50);
 		Items items4 = new Items("cappuccino",6.50);
 
 
-//Orders
+//Orders object
 		Order order1 = new Order();
 		Order order2 = new Order();
 		Order order3 = new Order();
@@ -20,8 +20,9 @@ public class TestOrders {
 		order3.name = "Noah";
 		order4.name = "Sam";
 		
-		System.out.println(order1);
-		System.out.println(order1.total);
+		//print order 1 and all the object
+		System.out.println("name : " + order1.name + " Total : " + order1.total + " Ready : " + order1.ready);
+		
 		//Add item1 to order2's item list and increment the order's total
 		order2.items.add(items1);
 		order2.total += items1.price;
