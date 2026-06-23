@@ -35,9 +35,6 @@ Tests the application by:
 * Playing 2 games
 * Charging once
 
-## Screenshot
-
-![Program Output](screenshot.png)
 
 ## Example Output
 
