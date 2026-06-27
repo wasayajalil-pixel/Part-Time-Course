@@ -1,10 +1,10 @@
-package com.Axsos.HelloWorld;
+package com.Axsos.PathVariables;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RoutesApplicationTests {
+class PathVariablesApplicationTests {
 
 	@Test
 	void contextLoads() {
