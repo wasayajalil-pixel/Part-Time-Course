@@ -25,17 +25,17 @@ public class MainController {
 		}
 
 		// If no "times" parameter, return once
-		if (times == null || times < 1) {
+		if (Times == null || Times < 1) {
 			return greeting;
 		}
 
 		// Repeat greeting
 		StringBuilder result = new StringBuilder();
 
-		for (int i = 0; i < times; i++) {
+		for (int i = 0; i < Times; i++) {
 			result.append(greeting);
 
-			if (i != times - 1) {
+			if (i != Times - 1) {
 				result.append("\n");
 			}
 		}
