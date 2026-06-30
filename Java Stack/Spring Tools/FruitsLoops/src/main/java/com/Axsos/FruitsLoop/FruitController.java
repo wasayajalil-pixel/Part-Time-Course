@@ -18,7 +18,7 @@ public class FruitController {
         fruits.add(new Item("Goji Berries", 4.0));
         fruits.add(new Item("Guava", 0.75));
 
-		model.addAttribute("fruits", fruits);
+		model.addAttribute("x", fruits);
 		
 		return "index";
 	}

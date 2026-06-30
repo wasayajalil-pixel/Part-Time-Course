@@ -64,7 +64,7 @@ tr:nth-child(odd) {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="fruit" items="${fruits}">
+				<c:forEach var="fruit" items="${x}">
 					<tr>
 						<td>${fruit.name}</td>
 						<td>${fruit.price}</td>

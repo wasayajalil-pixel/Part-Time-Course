@@ -1,43 +1,47 @@
 package com.Axsos.CoffeeApp;
+
 import java.util.ArrayList;
 
 public class Order {
-    //Order Variables
     private String name;
-    private double total;
     private boolean ready;
     private ArrayList<Items> items;
 
-  //CONSTRUCTOR
     public Order(String name) {
         this.name = name;
-        this.total = 0;
-        this.ready = false;
-        this.items = new ArrayList<>();
-    }
-    //Getter
-    public ArrayList<Items> getItems() {
-        return items;
+        this.setReady(false);
+        this.items = new ArrayList<Items>();
     }
 
     public void addItem(Items item) {
-        items.add(item);
-        total += item.getPrice();
+        this.items.add(item);
     }
 
-    public String getName() {
-        return name;
-    }
+    public double getOrderTotal() {
+        double total = 0;
 
-    public double getTotal() {
+        for (Items item : items) {
+            total += item.getPrice();
+        }
+
         return total;
     }
 
-    public boolean isReady() {
-        return ready;
+    public void display() {
+        System.out.println("Customer: " + this.name);
+
+        for (Items item : items) {
+            System.out.println(item.getName() + " - $" + item.getPrice());
+        }
+
+        System.out.println("Total: $" + getOrderTotal());
     }
-    //Setter
-    public void setReady(boolean ready) {
-        this.ready = ready;
-    }
+
+	public boolean isReady() {
+		return ready;
+	}
+
+	public void setReady(boolean ready) {
+		this.ready = ready;
+	}
 }
