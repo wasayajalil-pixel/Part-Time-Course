@@ -67,15 +67,6 @@ src
 * Expression Language (EL)
 * Static Resources
 
-## 📸 Screenshots
-
-### Home Page
-
-![Home Page](images/home.png)
-
-### Fortune Page
-
-![Fortune Page](images/show.png)
 
 ## 👨‍💻 Author
 
