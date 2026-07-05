@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.axsos.booksapi.models.Book;
 import com.axsos.booksapi.services.BookService;
@@ -20,7 +20,7 @@ public class BooksController {
     }
 
     // Display all books on index.jsp
-    @RequestMapping("/books")
+    @GetMapping("/books")
     public String index(Model model) {
 
         // Get all books from database
@@ -33,7 +33,7 @@ public class BooksController {
         return "index.jsp";
     }
 //    get 1 id and return the result in show page
-    @RequestMapping("/books/{id}")
+    @GetMapping("/books/{id}")
     public String show(@PathVariable("id") Long id, Model model) {
 
         Book book = bookService.findBook(id);

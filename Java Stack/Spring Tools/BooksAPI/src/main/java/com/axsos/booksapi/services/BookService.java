@@ -3,6 +3,7 @@ package com.axsos.booksapi.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.axsos.booksapi.models.Book;
@@ -10,15 +11,16 @@ import com.axsos.booksapi.repositories.BookRepository;
 @Service
 public class BookService {
 	// Connect to Repository
+//	@Autowired
     private final BookRepository bookRepository;
     
-    // Constructor Injection
+//     Constructor Injection
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
     // Return all books
     public List<Book> allBooks() {
-        return (List<Book>) bookRepository.findAll();
+        return bookRepository.findAll();
     }
     // Save a new book
     public Book createBook(Book book) {

@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- c:out ; c:forEach etc. --> 
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<!-- Formatting (dates) --> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
+<!-- c:out ; c:forEach etc. -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- Formatting (dates) -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- for rendering errors on PUT routes -->
-<%@ page isErrorPage="true" %>
+<%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +32,7 @@
 			<c:forEach var="book" items="${books}">
 				<tr>
 					<td>${book.id}</td>
-					<td>${book.title}</td>
+					<td><a href="/books/${book.id}"> ${book.title} </a></td>
 					<td>${book.language}</td>
 					<td>${book.numberOfPages}</td>
 				</tr>

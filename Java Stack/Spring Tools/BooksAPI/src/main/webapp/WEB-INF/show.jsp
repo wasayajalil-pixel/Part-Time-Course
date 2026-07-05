@@ -8,14 +8,14 @@
 <title>Show Book</title>
 </head>
 <body>
-<h1>Book Details</h1>
+	<h1>Book Details</h1>
 
-<p>ID: ${book.id}</p>
-<p>Title: ${book.title}</p>
-<p>Description: ${book.description}</p>
-<p>Language: ${book.language}</p>
-<p>Number of Pages: ${book.numberOfPages}</p>
+	<p>ID: ${book.id}</p>
+	<p>Title: ${book.title}</p>
+	<p>Description: ${book.description}</p>
+	<p>Language: ${book.language}</p>
+	<p>Number of Pages: ${book.numberOfPages}</p>
 
-<a href="/books">Back to All Books</a>
+	<a href="/books">Back to All Books</a>
 </body>
 </html>

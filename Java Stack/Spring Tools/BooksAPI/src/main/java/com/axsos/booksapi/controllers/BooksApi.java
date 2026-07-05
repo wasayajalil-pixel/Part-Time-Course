@@ -17,7 +17,7 @@ public class BooksApi {
     }
 
     // Get all books
-    @RequestMapping("/api/books")
+    @GetMapping("/api/books")
     public List<Book> index() {
         return bookService.allBooks();
     }
@@ -37,7 +37,7 @@ public class BooksApi {
     }
 
     // Get one book by id
-    @RequestMapping("/api/books/{id}")
+    @GetMapping("/api/books/{id}")
     public Book show(@PathVariable("id") Long id){
 
         return bookService.findBook(id);
