@@ -1,0 +1,17 @@
+package com.axsos.authentication.repositories;
+
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.axsos.authentication.models.User;
+
+@Repository
+public interface UserRepository extends CrudRepository<User, Long> {
+
+    // Spring will automatically create SQL:
+    // SELECT * FROM users WHERE email = ?
+    Optional<User> findByEmail(String email);
+
+}
