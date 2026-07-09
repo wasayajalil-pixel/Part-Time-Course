@@ -176,7 +176,7 @@ Users can create a new account or sign in using existing credentials.
 
 ## Dashboard
 
-![Dashboard](landPage\(1\).png)
+![Dashboard](landPage).png)
 
 After successful authentication, the user is redirected to the dashboard where they are welcomed by name and can securely log out of the application.
 
