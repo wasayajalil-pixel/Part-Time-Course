@@ -62,7 +62,7 @@ public class UserService {
             result.rejectValue("email", "NotFound", "Invalid email or password");
             return null;
         }
-
+        //get the user object
         User user = potentialUser.get();
 
         // Check password

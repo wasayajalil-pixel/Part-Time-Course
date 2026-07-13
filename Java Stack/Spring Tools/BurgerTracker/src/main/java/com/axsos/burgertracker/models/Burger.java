@@ -54,21 +54,7 @@ public class Burger {
     	
     }
 
-//    Constructor
-	public Burger(Long id,
-			@NotNull(message = "Burger name is required") @Size(min = 2, max = 100, message = "Burger name must be between 2 and 100 characters") String burgerName,
-			@NotNull(message = "Restaurant name is required") @Size(min = 2, max = 100, message = "Restaurant name must be between 2 and 100 characters") String restaurantName,
-			@Min(value = 1, message = "Rating must be at least 1") @Max(value = 5, message = "Rating cannot be more than 5") Integer rating,
-			@Size(max = 255, message = "Notes cannot be more than 255 characters") String notes, Date createdAt,
-			Date updatedAt) {
-		this.id = id;
-		this.burgerName = burgerName;
-		this.restaurantName = restaurantName;
-		this.rating = rating;
-		this.notes = notes;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
+
 //  Getters & Setters
 	public Long getId() {
 		return id;

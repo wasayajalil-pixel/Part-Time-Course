@@ -126,8 +126,5 @@ public class Game {
         return updatedAt;
     }
 	
-	
-	
-    
     
 }
