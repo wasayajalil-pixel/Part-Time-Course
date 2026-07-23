@@ -21,6 +21,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -61,6 +62,17 @@ public class User {
 
 	// Store uploaded image path
 	private String avatar;
+	
+	@NotBlank(message = "Please select a gender")
+	private String gender;
+	
+	@NotBlank(message = "Phone number is required")
+	@Pattern(
+	    regexp = "^\\+?[0-9]{10,15}$",
+	    message = "Enter a valid phone number"
+	)
+	private String phone;
+
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -121,6 +133,16 @@ public class User {
 	public String getAvatar() {
 		return avatar;
 	}
+	
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
@@ -138,6 +160,17 @@ public class User {
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
     @PrePersist
     protected void onCreate(){
@@ -147,6 +180,7 @@ public class User {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+    
     // Check if the user is at least 18 years old.
     public boolean isAdult() {
         if (birthday == null) {

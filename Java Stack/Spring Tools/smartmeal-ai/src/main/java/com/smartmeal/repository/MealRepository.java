@@ -1,0 +1,2 @@
+package com.smartmeal.repository; import com.smartmeal.model.*; import org.springframework.data.jpa.repository.JpaRepository; import java.time.LocalDateTime; import java.util.List;
+public interface MealRepository extends JpaRepository<Meal,Long>{ List<Meal> findByUserOrderByEatenAtDesc(User user); List<Meal> findByUserAndEatenAtBetweenOrderByEatenAtDesc(User user, LocalDateTime a, LocalDateTime b); }

@@ -1,0 +1,4 @@
+const api=async(url,opt={})=>{const r=await fetch(url,{headers:{'Content-Type':'application/json',...(opt.headers||{})},...opt});let d=null;try{d=await r.json()}catch{}if(!r.ok)throw new Error(d?.error||'Request failed');return d};
+const nav=`<nav class="fixed bottom-0 left-0 right-0 bg-white border-t md:static md:border-0"><div class="max-w-5xl mx-auto flex justify-around p-3 text-sm"><a href="/dashboard">Home</a><a href="/history">History</a><a href="/analysis">Analyze</a><a href="/recommendations">Recommend</a><a href="/profile">Profile</a></div></nav>`;
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('[data-nav]').forEach(x=>x.innerHTML=nav)});
+function toast(msg,ok=true){const x=document.createElement('div');x.className=`fixed top-4 right-4 px-4 py-3 rounded-xl text-white ${ok?'bg-green-600':'bg-red-600'}`;x.textContent=msg;document.body.appendChild(x);setTimeout(()=>x.remove(),2600)}
