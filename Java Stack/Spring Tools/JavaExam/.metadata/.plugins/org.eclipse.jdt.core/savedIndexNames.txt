@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+C:\Users\wasay\OneDrive\Desktop\Axsos\Java Stack\Spring Tools\JavaExam\.metadata\.plugins\org.eclipse.jdt.core

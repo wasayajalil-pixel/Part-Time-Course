@@ -1,0 +1,3 @@
+INDEX VERSION 1.134
+C:\Users\wasay\OneDrive\Desktop\JavaExam\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3302887113.index
+\JavaExam\src\main\java
