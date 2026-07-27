@@ -22,6 +22,8 @@ class Ninja {
     console.log(`health : ${this.health}`);
   }
 }
+
+
 //Child Class
 class Sensei extends Ninja {
   constructor(name) {
@@ -48,3 +50,5 @@ const superSensei = new Sensei("Master Splinte");
 superSensei.sayName();
 superSensei.showStatus();
 superSensei.speakWisdom();
+
+
