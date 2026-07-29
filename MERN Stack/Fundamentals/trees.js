@@ -1,3 +1,4 @@
+import Queue from "./queue.js";
 class Node {
   constructor(val) {
     this.val = val;
@@ -39,11 +40,32 @@ class BTS {
     }
   }
 
-  postOrder(root){
-    if(root !== null){
-        this.postOrder(root.left);
-        this.postOrder(root.right);
-        console.log(root.val)
+  postOrder(root) {
+    if (root !== null) {
+      this.postOrder(root.left);
+      this.postOrder(root.right);
+      console.log(root.val);
+    }
+  }
+
+  //Breadth First Search
+  BFS(root) {
+    if (root == null) {
+      return null;
+    }
+    const queue = new Queue();
+    queue.enqueue(root);
+
+    while (!queue.isEmpty()) {
+      currentNode = queue.dequeue();
+      if (currentNode.left != null) {
+        queue.enqueue(currentNode.left);
+      }
+
+      if (currentNode.right != null) {
+        queue.enqueue(currentNode.right);
+      }
     }
   }
 }
+

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import './App.css'
-import Form from './components/Form'
+import HookForm from './components/HookForm'
 
 function App() {
+ 
   return (
     <>
-     <Form />
+    <HookForm/>
+
     </>
   )
 }

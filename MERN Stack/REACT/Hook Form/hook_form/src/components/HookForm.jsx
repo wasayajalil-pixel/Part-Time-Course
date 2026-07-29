@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Form = (props) => {
-  const [firstName, setFirstname] = useState("");
+const HookForm = () => {
+  const [firstName, setFirstName] = useState("");
   const [lastName, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,12 +9,14 @@ const Form = (props) => {
 
   const createUser = (e) => {
     e.preventDefault();
-    const newUser = { firstName, lastName, email, password, confirmPassword };
   };
-  
+
+  const newUser = {firstName:firstName,lastName:lastName,email:email,password:password,confirmPassword:confirmPassword}
 
   return (
     <div>
+        <h2>Form</h2>
+    
       <form onSubmit={createUser}>
         <div>
           <label htmlFor="firstName">First Name</label>
@@ -22,9 +24,10 @@ const Form = (props) => {
             type="text"
             name="firstName"
             id="firstName"
-            onChange={(e) => setFirstname(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
+
         <div>
           <label htmlFor="lastName">Last Name</label>
           <input
@@ -34,6 +37,7 @@ const Form = (props) => {
             onChange={(e) => setLastname(e.target.value)}
           />
         </div>
+
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -43,6 +47,7 @@ const Form = (props) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
         <div>
           <label htmlFor="password">Password</label>
           <input
@@ -52,6 +57,7 @@ const Form = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
         <div>
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
@@ -61,8 +67,11 @@ const Form = (props) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <input type="submit" value="newUser" />
+
+        <input type="submit" value="Submit" />
       </form>
+      <hr />
+
       <h2>Your Form Data</h2>
 
       <p>First Name: {firstName}</p>
@@ -73,5 +82,4 @@ const Form = (props) => {
     </div>
   );
 };
-
-export default Form;
+export default HookForm;
