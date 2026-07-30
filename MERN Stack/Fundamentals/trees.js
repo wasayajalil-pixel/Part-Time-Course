@@ -18,11 +18,21 @@ class BTS {
     }
     if (val < root.val) {
       root.left = this.addNewNode(root.left, val);
+
     } else {
       root.right = this.addNewNode(root.right, val);
     }
     return root;
   }
+
+  searchBST (root,val){
+    if (root == null){
+      return null;
+    }
+    if()
+  }
+
+
 
   inOrder(root) {
     if (root !== null) {
