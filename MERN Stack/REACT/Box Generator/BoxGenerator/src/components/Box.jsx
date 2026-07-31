@@ -6,7 +6,7 @@ const Box = () => {
     const createBox = (e) => {
         e.preventDefault();
     }
-    setBoxes
+    setBoxes ([,,])
     return(
         <div>
       <form onSubmit={createBox}>
