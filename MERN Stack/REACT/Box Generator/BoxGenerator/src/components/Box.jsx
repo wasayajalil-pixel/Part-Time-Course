@@ -1,14 +1,17 @@
 import { useState } from "react";
 
 const Box = () => {
-    const [color,setColor] = useState("");
-    const [box,setBoxes] = useState([]);
-    const createBox = (e) => {
-        e.preventDefault();
-    }
-    setBoxes ([,,])
-    return(
-        <div>
+  const [color, setColor] = useState("");
+  const [boxes, setBoxes] = useState([]);
+
+  const createBox = (e) => {
+    e.preventDefault();
+
+    setBoxes([...boxes, color]);
+  };
+
+  return (
+    <div>
       <form onSubmit={createBox}>
         <label>Color: </label>
 
@@ -42,7 +45,7 @@ const Box = () => {
       </div>
     </div>
   );
+};
     
 
-}
 export default Box;
