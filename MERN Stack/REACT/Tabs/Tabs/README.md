@@ -1,18 +1,83 @@
-# React + Vite
+# Tabs React Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This project is a simple React application that demonstrates how to create a reusable **Tabs component**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The `Tabs` component accepts an array of objects through props. Each tab contains:
 
-## React Compiler
+* `label` – the name displayed on the tab button.
+* `content` – the content displayed when the tab is selected.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+When the user clicks on a tab, React updates the state and displays the corresponding content.
 
-Note: This will impact Vite dev & build performances.
+## Features
 
-## Expanding the ESLint configuration
+* Reusable `Tabs` component
+* Accepts an array of varying length
+* Uses React `useState`
+* Uses `map()` to display the tabs
+* Clicking a tab displays the correct content
+* Content updates immediately without refreshing the page
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+
+* React
+* JavaScript
+* HTML
+* CSS
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   └── Tabs.jsx
+├── App.jsx
+└── main.jsx
+```
+
+## How It Works
+
+The component uses `useState` to keep track of the currently selected tab.
+
+```jsx
+const [selectedTab, setSelectedTab] = useState(0);
+```
+
+The tabs are displayed using `map()`:
+
+```jsx
+tabs.map((tab, index) => (
+  <button
+    key={index}
+    onClick={() => setSelectedTab(index)}
+  >
+    {tab.label}
+  </button>
+))
+```
+
+When a user clicks a tab, `setSelectedTab(index)` changes the selected tab.
+
+The correct content is then displayed using:
+
+```jsx
+tabs[selectedTab].content
+```
+
+## Run the Project
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Start the project:
+
+```bash
+npm run dev
+```
+
+
