@@ -8,16 +8,19 @@ const PokemonAPI = () => {
 
   const fetchPokemon = async () => {
     try {
+      // Show loading message and if there any error will show the error message
       setLoading(true);
       setError("");
-
+      //get request using Axios
       const response = await axios.get(
         "https://pokeapi.co/api/v2/pokemon?limit=807",
       );
+      // Save the Pokemon array into state
       setPokemon(response.data.results);
     } catch (error) {
       console.log(error);
       setError("Something went wrong while loading the Pokémon.");
+    // Runs whether the request succeeds or fails
     } finally {
       setLoading(false);
     }

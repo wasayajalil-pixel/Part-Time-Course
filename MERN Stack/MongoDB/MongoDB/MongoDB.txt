@@ -1,0 +1,599 @@
+Microsoft Windows [Version 10.0.22631.6199]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\wasay\OneDrive\Desktop\Axsos\MERN Stack\MongoDB\MongoDB>mongosh "mongodb+srv://cluster0.yymxhqm.mongodb.net/" --apiVersion 1 --username wasayajalil_db_user
+Enter password: ****************
+Current Mongosh Log ID: 6a71bc0f0ec5f6f8f4298db9
+Connecting to:          mongodb+srv://<credentials>@cluster0.yymxhqm.mongodb.net/?appName=mongosh+2.9.2
+Using MongoDB:          8.0.28 (API Version 1)
+Using Mongosh:          2.9.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+Atlas atlas-14dyyn-shard-0 [primary] test> use my_first_db
+switched to db my_first_db
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.createCollection("Students")
+{ ok: 1 }
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.insertOne({name:"Jalil",home_state:"Ramallah",lucky_number:16,birthday:{month:3,day:16,year:1995}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6a71bd150ec5f6f8f4298dba')
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.insertMany([{name:"Chaker",home_state:"abuFalah",lucky_number:11,birthday:{month:9,day:13,year:1996}},{name:"murad",home_state:"Birzeit",lucky_number:9,birthday:{month:11,day:19,Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.insertMany([{name:"Chaker",home_state:"abuFalah",lucky_number:11,birthday:{month:9,day:13,year:1996}},{name:"murad",home_state:"Birzeit",lucky_number:9,birthday:{month:11,day:19,year:1997}},  {
+|     name: "Sara",
+|     home_state: "Washington",
+|     lucky_number: 7,
+|     birthday: {
+|       month: 3,
+|       day: 10,
+|       year: 1997
+|     }
+|   },
+|   {
+|     name: "Lina",
+|     home_state: "Washington",
+|     lucky_number: 5,
+|     birthday: {
+|       month: 11,
+|       day: 25,
+|       year: 1999
+|     }
+|   }])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a71be440ec5f6f8f4298dbb'),
+    '1': ObjectId('6a71be440ec5f6f8f4298dbc'),
+    '2': ObjectId('6a71be440ec5f6f8f4298dbd'),
+    '3': ObjectId('6a71be440ec5f6f8f4298dbe')
+  }
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbc'),
+    name: 'murad',
+    home_state: 'Birzeit',
+    lucky_number: 9,
+    birthday: { month: 11, day: 19, year: 1997 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbd'),
+    name: 'Sara',
+    home_state: 'Washington',
+    lucky_number: 7,
+    birthday: { month: 3, day: 10, year: 1997 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbe'),
+    name: 'Lina',
+    home_state: 'Washington',
+    lucky_number: 5,
+    birthday: { month: 11, day: 25, year: 1999 }
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({$in:["Ramallah","abuFalah"]})
+MongoServerError[BadValue]: unknown top level operator: $in. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({home_state:"Ramallah"})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 }
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({home_state:"abuFalah"})
+[
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 }
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({lucky_number > 3})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:31)
+
+> 1 | db.Students.find({lucky_number > 3})
+    |                                ^
+  2 |
+
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({lucky_number:{$gt 3})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:36)
+
+> 1 | db.Students.find({lucky_number:{$gt 3})
+    |                                     ^
+  2 |
+
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({lucky_number:{$gt :3})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:39)
+
+> 1 | db.Students.find({lucky_number:{$gt :3})
+    |                                        ^
+  2 |
+
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({lucky_number:{$gt :3}})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbc'),
+    name: 'murad',
+    home_state: 'Birzeit',
+    lucky_number: 9,
+    birthday: { month: 11, day: 19, year: 1997 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbd'),
+    name: 'Sara',
+    home_state: 'Washington',
+    lucky_number: 7,
+    birthday: { month: 3, day: 10, year: 1997 }
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbe'),
+    name: 'Lina',
+    home_state: 'Washington',
+    lucky_number: 5,
+    birthday: { month: 11, day: 25, year: 1999 }
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.insertMany({$set:interests["coding","brunch","mongoDB"]})
+ReferenceError: interests is not defined
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateMany({$set:interests["coding","brunch","mongoDB"]})
+ReferenceError: interests is not defined
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateMany({},$set:{interests:["coding","brunch","MongoDB"]}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:30)
+
+> 1 | db.Students.updateMany({},$set:{interests:["coding","brunch","MongoDB"]}})
+    |                               ^
+  2 |
+
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateMany(
+|   {},
+|   {
+|     $set: {
+|       interests: ["coding", "brunch", "MongoDB"]
+|     }
+|   }
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 },
+    interests: [ 'coding', 'brunch', 'MongoDB' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbc'),
+    name: 'murad',
+    home_state: 'Birzeit',
+    lucky_number: 9,
+    birthday: { month: 11, day: 19, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbd'),
+    name: 'Sara',
+    home_state: 'Washington',
+    lucky_number: 7,
+    birthday: { month: 3, day: 10, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbe'),
+    name: 'Lina',
+    home_state: 'Washington',
+    lucky_number: 5,
+    birthday: { month: 11, day: 25, year: 1999 },
+    interests: [ 'coding', 'brunch', 'MongoDB' ]
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({ _id:ObjectId("6a71be440ec5f6f8f4298dbd")},{$set:interests["JAVA"]})
+ReferenceError: interests is not defined
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({ name:"Jalil" },{$push:{interests:"JAVA"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({ name:"murad" },{$push:{interests:"Chief"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({name:"Chaker"},{$push:{interests:"football"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({name:"Lina"},{$push:{interests:"Model"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({name:"Saraa"},{$push:{interests:"taxes"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'JAVA' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbc'),
+    name: 'murad',
+    home_state: 'Birzeit',
+    lucky_number: 9,
+    birthday: { month: 11, day: 19, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'Chief' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbd'),
+    name: 'Sara',
+    home_state: 'Washington',
+    lucky_number: 7,
+    birthday: { month: 3, day: 10, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbe'),
+    name: 'Lina',
+    home_state: 'Washington',
+    lucky_number: 5,
+    birthday: { month: 11, day: 25, year: 1999 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'Model' ]
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({name:"Sara"},{$push:{interests:"taxes"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'JAVA' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbc'),
+    name: 'murad',
+    home_state: 'Birzeit',
+    lucky_number: 9,
+    birthday: { month: 11, day: 19, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'Chief' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbd'),
+    name: 'Sara',
+    home_state: 'Washington',
+    lucky_number: 7,
+    birthday: { month: 3, day: 10, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'taxes' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbe'),
+    name: 'Lina',
+    home_state: 'Washington',
+    lucky_number: 5,
+    birthday: { month: 11, day: 25, year: 1999 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'Model' ]
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.deleteOne({name:Sara},{interests["taxes"]}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:44)
+
+> 1 | db.Students.deleteOne({name:Sara},{interests["taxes"]}})
+    |                                             ^
+  2 |
+
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateOne({name:"Sara"},{$pull:{interests:"taxes"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'JAVA' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbc'),
+    name: 'murad',
+    home_state: 'Birzeit',
+    lucky_number: 9,
+    birthday: { month: 11, day: 19, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'Chief' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbd'),
+    name: 'Sara',
+    home_state: 'Washington',
+    lucky_number: 7,
+    birthday: { month: 3, day: 10, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbe'),
+    name: 'Lina',
+    home_state: 'Washington',
+    lucky_number: 5,
+    birthday: { month: 11, day: 25, year: 1999 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'Model' ]
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.deleteMany({home_state:"Washington"})
+{ acknowledged: true, deletedCount: 2 }
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'JAVA' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbc'),
+    name: 'murad',
+    home_state: 'Birzeit',
+    lucky_number: 9,
+    birthday: { month: 11, day: 19, year: 1997 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'Chief' ]
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.deleteOne({name:"murad"})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71bd150ec5f6f8f4298dba'),
+    name: 'Jalil',
+    home_state: 'Ramallah',
+    lucky_number: 16,
+    birthday: { month: 3, day: 16, year: 1995 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'JAVA' ]
+  },
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ]
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.deleteOne({lucky_number:{$gt:5}})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ]
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.insertOne({number_of_belts:0})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6a71c6f70ec5f6f8f4298dbf')
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ]
+  },
+  { _id: ObjectId('6a71c6f70ec5f6f8f4298dbf'), number_of_belts: 0 }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateMany({},{$inc:{number_of_belts:3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ],
+    number_of_belts: 3
+  },
+  { _id: ObjectId('6a71c6f70ec5f6f8f4298dbf'), number_of_belts: 3 }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.insertOne({},{$set:{updated_on:new Date()}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6a71c8880ec5f6f8f4298dc0')
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ],
+    number_of_belts: 3
+  },
+  { _id: ObjectId('6a71c6f70ec5f6f8f4298dbf'), number_of_belts: 3 },
+  { _id: ObjectId('6a71c8880ec5f6f8f4298dc0') }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.students.find().pretty()
+
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.students.find().pretty()
+
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.updateMany(
+|   {},
+|   {
+|     $currentDate: {
+|       updated_on: true
+|     }
+|   }
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db> db.Students.find({})
+[
+  {
+    _id: ObjectId('6a71be440ec5f6f8f4298dbb'),
+    name: 'Chaker',
+    home_state: 'abuFalah',
+    lucky_number: 11,
+    birthday: { month: 9, day: 13, year: 1996 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'football' ],
+    number_of_belts: 3,
+    updated_on: ISODate('2026-08-04T11:11:15.290Z')
+  },
+  {
+    _id: ObjectId('6a71c6f70ec5f6f8f4298dbf'),
+    number_of_belts: 3,
+    updated_on: ISODate('2026-08-04T11:11:15.290Z')
+  },
+  {
+    _id: ObjectId('6a71c8880ec5f6f8f4298dc0'),
+    updated_on: ISODate('2026-08-04T11:11:15.290Z')
+  }
+]
+Atlas atlas-14dyyn-shard-0 [primary] my_first_db>
