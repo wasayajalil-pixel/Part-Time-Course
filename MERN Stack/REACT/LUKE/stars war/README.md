@@ -72,7 +72,7 @@ src
 
 Displays information about a Star Wars character.
 
-![People](./screenshots/people.png)
+![People](people.png)
 
 ---
 
@@ -80,7 +80,7 @@ Displays information about a Star Wars character.
 
 Displays information about a Star Wars planet.
 
-![Planet](./screenshots/planet.png)
+![Planet](planets.png)
 
 ---
 
@@ -88,7 +88,7 @@ Displays information about a Star Wars planet.
 
 If the entered ID is invalid, the application displays the following error page.
 
-![Error](./screenshots/error.png)
+![Error](error.png)
 
 ---
 
