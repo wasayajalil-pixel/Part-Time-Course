@@ -1,18 +1,133 @@
-# React + Vite
+# ⭐ Star Wars Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to search for **Star Wars Characters** and **Planets** using the Star Wars API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Search for Characters (People) or Planets.
+- Enter an ID to retrieve information.
+- React Router for navigation.
+- Axios for API requests.
+- Loading state while fetching data.
+- Error page with Obi-Wan Kenobi image.
+- Displays multiple attributes for each resource.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## Technologies Used
 
-## Expanding the ESLint configuration
+- React (Vite)
+- React Router DOM
+- Axios
+- CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/star-wars-explorer.git
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Start the project
+
+```bash
+npm run dev
+```
+
+---
+
+## Project Structure
+
+```
+src
+│
+├── components
+│   └── SearchForm.jsx
+│
+├── pages
+│   ├── Home.jsx
+│   ├── People.jsx
+│   └── Planet.jsx
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+# Screenshots
+
+## Character Search
+
+Displays information about a Star Wars character.
+
+![People](./screenshots/people.png)
+
+---
+
+## Planet Search
+
+Displays information about a Star Wars planet.
+
+![Planet](./screenshots/planet.png)
+
+---
+
+## Error Page
+
+If the entered ID is invalid, the application displays the following error page.
+
+![Error](./screenshots/error.png)
+
+---
+
+## Example Character Information
+
+- Name
+- Height
+- Mass
+- Hair Color
+- Skin Color
+- Eye Color
+- Birth Year
+
+---
+
+## Example Planet Information
+
+- Name
+- Climate
+- Terrain
+- Population
+- Gravity
+- Diameter
+- Orbital Period
+
+---
+
+## Error Handling
+
+When an invalid ID is entered, the application displays:
+
+> **"These aren't the droids you're looking for."**
+
+along with an image of **Obi-Wan Kenobi**.
+
+---
+
+## Author
+
+**Jalil Wasaya**
+
+AXSOS Academy – Full Stack Development Bootcamp
