@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "http://localhost:5173",
+    // Allow cookies between React and Express
+    credentials: true,
   })
 );
 
@@ -27,8 +29,8 @@ app.use(
 app.use(cookieParser());
 
 // Routes AFTER middleware
-// require("./routes/user.routes")(app);
-// require("./routes/product.routes")(app);
+require("./routes/user.routes")(app);
+require("./routes/product.routes")(app);
 
 
 const port = process.env.PORT || 8000;
